@@ -20,6 +20,16 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+        $this->load->add_package_path(dirname(BASEPATH));
+        $this->load->helper('demo');
+        $this->load->base_config('DEMO');
+
+       	// 先加载
+        $this->load->base_config('Base_Error_Code');
+        include_once(APPPATH . 'controllers/Error_Code.php');
+        var_dump(Error_Code::desc(Error_Code::DEMO_ERROR));
+        
 		$this->load->view('welcome_message');
 	}
 }
+
