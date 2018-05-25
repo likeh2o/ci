@@ -25,4 +25,8 @@ abstract class Base_Error_Code
         self::ERROR_REDIS   => 'REDIS错误',
         self::ERROR_UNKNOWN => '未知错误',
     );
+
+    protected static function get_info($code, $info){
+        return empty($info[$code]) ? '未定义错误' : $info[$code];
+    }
 }

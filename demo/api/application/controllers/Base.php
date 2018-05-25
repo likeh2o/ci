@@ -8,6 +8,7 @@ require_once(APPPATH . '/controllers/Error_Code.php');
 class Base extends Api_Controller {
     public function __construct(){
         parent::__construct();
+        $this->load->model('ORM_Model');
     }
 
 }

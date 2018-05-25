@@ -30,7 +30,7 @@ class Api_Controller extends REST_Controller
             $code = $e->getCode();
 
             if (empty($code) || !is_numeric($code)) {
-                $code = Error_Code::ERROR_THROW;
+                $code = Base_Error_Code::ERROR_THROW;
                 $info = '[' . $code . '] ' . $info;
             }
 
@@ -154,8 +154,8 @@ class Api_Controller extends REST_Controller
     protected function response_error($code, $info = '')
     {
         if (class_exists('Error_Code')) {
-            if(!empty(Error_Code::desc($code))){
-                $info = Error_Code::desc($code) . ' ' . $info;
+            if(!empty(Error_Code::info($code))){
+                $info = Error_Code::info($code) . ' ' . $info;
             }
         }
         
