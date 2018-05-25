@@ -8,9 +8,7 @@ class MY_Loader extends CI_Loader {
     }
 
     public function base_config($file){
-        error_reporting(1);
         $file_path = dirname(BASEPATH).'/config/'.$file.'.php';
-        var_dump($file_path);
         if(file_exists($file_path)){
             require_once($file_path);
             $env_file_path = dirname(BASEPATH).'/config/'.ENVIRONMENT.'/'.$file.'.php';

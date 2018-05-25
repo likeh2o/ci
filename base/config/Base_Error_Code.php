@@ -15,6 +15,7 @@ abstract class Base_Error_Code
 
     const ERROR_UNKNOWN = -99;
     // -100 以上为业务预留
+    // 各个项目可以约定好错误码段
 
     protected static $base_info = array(
         self::SUCCESS       => '成功',
