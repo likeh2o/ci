@@ -69,7 +69,7 @@
 	<h1>Welcome to CodeIgniter!</h1>
 
 	<div id="body">
-		<p>{$hi}</p>
+		<p>{$hi} {$article->title}</p>
 		<p>base/config/common:PARAM_TYPE_INT:{$PARAM_TYPE_INT}</p>
 		<p><img src="/welcome/captcha" alt="img" /></p>
 

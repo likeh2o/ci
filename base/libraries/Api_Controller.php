@@ -155,9 +155,27 @@ class Api_Controller extends REST_Controller
         return $this->response($data);
     }
 
-    protected function response_result($result)
+    protected function response_update($result)
     {
-        $data = $this->api_response->gen_result($result);
+        $data = $this->api_response->gen_update($result);
+        return $this->response($data);
+    }
+
+    protected function response_insert($result)
+    {
+        $data = $this->api_response->gen_insert($result);
+        return $this->response($data);
+    }
+
+    protected function response_object($result)
+    {
+        $data = $this->api_response->gen_object($result);
+        return $this->response($data);
+    }
+
+    protected function response_list($result, $total=0, $page=1, $size=10, array $ext = [])
+    {
+        $data = $this->api_response->gen_list($result, $total, $page, $size, $ext);
         return $this->response($data);
     }
 

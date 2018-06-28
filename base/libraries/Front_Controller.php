@@ -16,6 +16,7 @@ class Front_Controller extends CI_Controller
             exit('error : is front controller!');
         }
         $this->load->add_package_path(dirname(BASEPATH));
+        $this->load->base_config('common');
         $this->load->library('front_smarty', '','smarty');
         $this->load->library('session');
         $this->load->helper('demo');
@@ -116,12 +117,11 @@ class Front_Controller extends CI_Controller
             'content'   => 1,
             'lineWidth' => 1,
         );
-        $this->load->library('Captcha/SimpleCaptcha', $options); //图片验证生成
-        // $simpleCaptcha = new SimpleCaptcha($options);
+        $this->load->library('Captcha/SimpleCaptcha', $options);
         $this->simplecaptcha->ShowImage();
         $captchaCode = $this->simplecaptcha->GetCaptchaText();
 
-        $this->User_model->setCaptchaCode($captchaCode);
+        //$this->User_model->setCaptchaCode($captchaCode);
         exit();
     }
 

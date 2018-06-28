@@ -8,4 +8,8 @@ define('PARAM_TYPE_NUMBER', 1);//参数类型-数字
 define('PARAM_TYPE_STRING', 2);//参数类型-字符串
 define('PARAM_TYPE_INT', 3);//参数类型-整数
 
+// get
+define('METHOD_GET', 'GET');
+// post
+define('METHOD_POST', 'POST');
 

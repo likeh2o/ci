@@ -12,9 +12,36 @@ class Api_Response{
         $this->_result->cost  = 0;
     }
 
-    public function gen_result($data){
+    public function gen_insert($lastid){
+        $result['lastid'] = $lastid;
+        return $this->gen_result($result);
+    }
+
+    public function gen_update($affected_rows){
+        $result['affected_rows'] = $affected_rows;
+        return $this->gen_result($result);
+    }
+
+    public function gen_list($data = array(), $total = 0, $page = 1, $size = 10, $ext = array()){
+        $result['total'] = (int)$total;
+        $result['page'] = (int)$page;
+        $result['size'] = (int)$size;
+        if($ext){
+            foreach($ext as $k=>$v){
+                $result[$k] = $v;
+            }
+        }
+        $result['data'] = $data;
+        return $this->gen_result($result);
+    }
+
+    public function gen_object($data){
+        return $this->gen_result($data);
+    }
+
+    private function gen_result($data){
         $this->calcu_cost();
-        $this->_result->data = $data;
+        $this->_result->result = $data;
         return $this->_result;
     }
 
