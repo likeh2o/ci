@@ -1,12 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-define('PARAM_NULL_EMPTY', 1);//非必选可空
-define('PARAM_NOT_NULL_EMPTY', 2);//必选可空
-define('PARAM_NULL_NOT_EMPTY', 3);//非必选不可空
-define('PARAM_NOT_NULL_NOT_EMPTY', 4);//必选不可空
-define('PARAM_TYPE_NUMBER', 1);//参数类型-数字
-define('PARAM_TYPE_STRING', 2);//参数类型-字符串
-define('PARAM_TYPE_INT', 3);//参数类型-整数
+require_once(dirname(__FILE__, 2) . '/config/Base_Error_Code.php');
 
 class Api_Controller extends REST_Controller
 {
@@ -17,7 +11,7 @@ class Api_Controller extends REST_Controller
         parent::__construct();
         $this->load->add_package_path(dirname(BASEPATH));
         $this->load->library('Api_Response');
-        //$this->load->base_config('Base_Error_Code');
+        $this->load->base_config('common');
     }
 
     public function _remap($method, $args=array())
@@ -29,13 +23,7 @@ class Api_Controller extends REST_Controller
             $info = $e->getMessage();
             $code = $e->getCode();
 
-            if (empty($code) || !is_numeric($code)) {
-                $code = Base_Error_Code::ERROR_THROW;
-                $info = '[' . $code . '] ' . $info;
-            }
-
-            $data = $this->api_response->gen_error($code, $info);
-            echo $this->response($data);
+            $this->response_error($code, $info);
             exit;
         }
     }
@@ -154,11 +142,15 @@ class Api_Controller extends REST_Controller
     protected function response_error($code, $info = '')
     {
         if (class_exists('Error_Code')) {
-            if(!empty(Error_Code::info($code))){
-                $info = Error_Code::info($code) . ' ' . $info;
+			$error_info  = Error_Code::info($code);
+            if($error_info == Error_Code::$base_info[Error_Code::ERROR_UNKNOWN]){
+                $info = '[' . $code . '] ' . $info;
+                $code = Error_Code::ERROR_UNKNOWN;
+            }else{
+                $info = $error_info.' ' .$info;
             }
         }
-        
+
         $data = $this->api_response->gen_error($code, $info);
         return $this->response($data);
     }
