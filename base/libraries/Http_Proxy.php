@@ -40,9 +40,7 @@ class Http_Proxy
 
     protected function request($host, $api, $params, $method = 'GET', $headers = array())
     {
-        //$host = self::$CI->config->item($host);
-        $host = $GLOBALS[$host];
-
+        $host = self::$CI->config->item($host);
         $request = array(
             'host'    => $host,
             'api'     => $api,

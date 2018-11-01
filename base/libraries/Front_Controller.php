@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-require_once(dirname(__FILE__, 2) . '/config/Base_Error_Code.php');
+require_once(dirname(__FILE__, 2) . '/libraries/Base_Error_Code.php');
 
 /**
  * Class Front_Controller
@@ -16,7 +16,7 @@ class Front_Controller extends CI_Controller
             exit('error : is front controller!');
         }
         $this->load->add_package_path(dirname(BASEPATH));
-        $this->load->base_config('common');
+        $this->load->config('common');
         $this->load->library('front_smarty', '','smarty');
         $this->load->library('session');
         $this->load->helper('demo');

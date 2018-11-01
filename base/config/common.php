@@ -1,5 +1,5 @@
 <?php
-
+// 常用配置
 define('PARAM_NULL_EMPTY', 1);//非必选可空
 define('PARAM_NOT_NULL_EMPTY', 2);//必选可空
 define('PARAM_NULL_NOT_EMPTY', 3);//非必选不可空
@@ -13,3 +13,5 @@ define('METHOD_GET', 'GET');
 // post
 define('METHOD_POST', 'POST');
 
+// ci need
+$config['common'] = '';

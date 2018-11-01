@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-require_once(dirname(__FILE__, 2) . '/config/Base_Error_Code.php');
+require_once(dirname(__FILE__, 2) . '/libraries/Base_Error_Code.php');
 
 class Api_Controller extends REST_Controller
 {
@@ -10,8 +10,8 @@ class Api_Controller extends REST_Controller
     {
         parent::__construct();
         $this->load->add_package_path(dirname(BASEPATH));
+        $this->load->config('common');
         $this->load->library('Api_Response');
-        $this->load->base_config('common');
     }
 
     public function _remap($method, $args=array())

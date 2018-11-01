@@ -6,7 +6,7 @@ class MY_Loader extends CI_Loader {
     public function __construct(){
         parent::__construct();
     }
-
+/*
     public function base_config($file){
         $file_path = dirname(BASEPATH).'/config/'.$file.'.php';
         if(file_exists($file_path)){
@@ -19,4 +19,5 @@ class MY_Loader extends CI_Loader {
             log_message('error', 'The configuration file '.$file_path.'.php does not exist.');
         }
     }
+*/
 }
