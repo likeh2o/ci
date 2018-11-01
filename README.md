@@ -6,7 +6,7 @@
 
 # 执行
 * config加载
-    * 扩展 Config类，增加_config_paths
+    * 增加_config_paths
 * 格式
     * https://www.php-fig.org/psr/
 
